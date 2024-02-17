@@ -1,68 +1,287 @@
+/* 1.ROOT */
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+    /* COLORS SCHEMES*/
+    /* Colors  */
+    --c-accent-100:rgb(243, 246, 251);
+    --c-primary-600:rgb(247, 240, 232);
+    --c-primary-500:rgb(245, 238, 229);    
+    --c-neutral-800:rgb(39, 30, 22);
+    --c-neutral-100:rgb(255, 255, 255);
+    
+    /* Backgrounds */
+    --bg-neutral-800:rgba(39, 30, 22, 0.11);
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+    --bg-accent-600:rgb(253, 248, 241);
+    --bg-accent-500:rgb(245, 238, 229);    
+    --bg-accent-400:#f4f3ff;   
+    --bg-accent-100:rgb(243, 246, 251); 
+    
+    --bg-primary-800:rgb(22, 28, 39);
+    --bg-primary-100: #E9E7FF ;
+    
+    
+    --bg-secondary-500:rgb(117, 82, 82);
+    --bg-secondary-300:rgba(219, 69, 31,0.13);
+    
+    
+    /* FONTS */    
+    /* Font Weights */
+    --fw-regular:400;
+    --fw-semi-bold:600;
+    --fw-bold:700;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    /* Font Size*/
+    /* defaults */
+    --fs-400:0.8em;
+    --fs-500:1rem;
+    --fs-600:1.125rem;
+    --fs-700:2.4rem;
+    --fs-800:3.75rem;
+
+    /* custom */
+    --fs-body:var(--fs-500);
+    --fs-primary-heading:var(--fs-800);
+    --fs-tertiary-headings:var(--fs-600);
+    --fs-secondary-heading:var(--fs-700);
+    --fs-btn:var(--fs-400);
+
+
+    /* Uniform values */
+    --border-radius:4px;
+    
+
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* 2.RESETS */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
+/* Remove default margin */
+*{
+    margin:0;
+    padding:0;
+    font:inherit;
+}
+
+
+/* Set core root defaults */
+html:focus-within {
+    scroll-behavior: smooth;
+}
+html,
+body{
+    height: 100%;
+}
+/* Set core body defaults */
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+    
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+/* 3.UTILITY CLASSES */
+
+/* 3.1 Heading Font Size*/
+.fs-primary-heading,
+.fs-secondary-heading{
+    line-height: 1.1;
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.fs-primary-heading{
+    font-size: var(--fs-primary-heading);
+    
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.fs-secondary-heading{
+    font-size:var(--fs-secondary-heading) ;
 }
+.fs-tertiary-heading{
+    font-size:var(--fs-tertiary-heading) ;
+}
+/* 3.2 Font weights */
+.fw-bold{font-weight: var(--fw-bold);}
+.fw-semi-bold{font-weight: var(--fw-semi-bold);}
+.fw-regular{font-weight: var(--fw-regular);}
+
+/* 3.3 Text Transforms */
+.capitalize{
+    text-transform: capitalize;
+}
+
+.uppercase{
+    text-transform:uppercase;
+}
+/* 3.4Text-color */
+.text-accent-100{
+    color:var(--c-accent-100);
+}
+.text-primary-600{
+    color:var(--c-primary-600)
+}
+.text-primary-500{
+    color:var(--c-primary-500);
+}
+.text-neutral-800{
+    color:var(--c-neutral-800);
+}
+.text-neutral-100{
+    color:var(--c-neutral-100);
+}
+/* 3.5 Background Colors */
+.bg-accent-100{
+    background-color:var(--bg-accent-100);
+}
+.bg-accent-600{
+    background-color:var(--bg-accent-600)
+}
+
+.bg-primary-500{
+    background-color:var(--bg-primary-500);
+}
+.bg-primary-800{
+    background-color:var(--bg-primary-800);
+}
+
+.bg-primary-100{
+    background-color:var(--bg-primary-100);
+}
+
+
+
+
+/* 3.6 Container*/
+.container{
+    --min-width:62em;
+
+width:min(var(--min-width),80%);
+margin-inline: auto;
+}
+
+/* 3.7 Flex-box */
+.flex{
+    display: flex;
+}
+
+.flex-column{    
+    flex-direction: column;
+}
+
+/* 4. GENERAL STYLES */
+body{
+    font-family: var(--ff-body);
+    font-size: var(--fs-body);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* MAIN */
+.main{
+    padding-inline-start: 0.5rem;
+}
+
+.table,
+.form{
+    box-shadow: 0 1px 1px 1px var(--bg-neutral-800);
+}
+
+/* Form */
+
+.form{
+    --min-width:41em;
+    margin: 2rem auto 4rem;
+    width:min(var(--min-width),90%);
+    }
+
+.form-search{
+    padding:1rem 2rem;
+    margin-block:1.5rem 2.2rem;
+}
+
+.form{
+    gap:0.8rem;
+    padding:2em 2em 1em;
+}
+
+.form-elements-wrapper{
+    gap:0.1rem;
+}
+
+.form-btn-wrapper{
+    margin-block-start: 1rem;
+}
+.form-input{
+
+    border:none;
+    border-radius: var(--border-radius);
+    padding:0.3em 0.5em;
+}
+.form-btn{
+    padding:0.5em 1.2em;
+    border:none;
+    border-radius:var(--border-radius);
+    cursor: pointer;
+    margin-block-start: 1rem;
+    background:var(--bg-secondary-500);
+    color:var(--c-neutral-100);
+    box-shadow: 0 5px 5px -6px var(--bg-neutral-800);
+    
+}
+/* Table */
+.table{
+    margin-block-start: 1.5rem;    
+    border-collapse: collapse;
+    border-radius: var(--border-radius);
+    margin-inline: auto;
+    background:var(--bg-accent-400);
+
+}
+caption,
+th,
+td{
+    padding:0.6rem 1.3rem;
+}
+.caption{
+    font-size: var(--fs-400);
+}
+th{
+    text-align: left;
+    background-color: var(--bg-secondary-500);
+    color:var(--c-neutral-100)
+}
+
+tr:nth-of-type(2n){
+background: var(--bg-secondary-300);
+}
+
+
+
+
